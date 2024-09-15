@@ -32,6 +32,59 @@ rightArrow.addEventListener('click', function() {
     alert('Vous avez cliqué sur la flèche droite !');
 });
 
+const dotsContainer = document.querySelector('.dots');
+let currentSlide = 0; // La première slide est active par défaut
+
+// Fonction pour mettre à jour la bannière et les dots
+function updateBanner(index) {
+    document.querySelector('.banner-img').src = `./assets/images/slideshow/${slides[index].image}`;
+    document.querySelector('#banner p').innerHTML = slides[index].tagLine;
+
+    // Mise à jour des dots
+    document.querySelectorAll('.dot').forEach((dot, dotIndex) => {
+        if (dotIndex === index) {
+            dot.classList.add('dot_selected'); // Dot actif
+        } else {
+            dot.classList.remove('dot_selected');
+        }
+    });
+}
+
+// dots dynamiquement en fonction du nombre de slides
+function generateDots() {
+    slides.forEach((slide, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        
+        // écouteur de clic pour changer la slide
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateBanner(currentSlide);
+        });
+
+        // dot dans le conteneur
+        dotsContainer.appendChild(dot);
+    });
+
+    // premier dot par défaut
+    updateBanner(currentSlide);
+}
+
+// Initialisation : Générer les points et afficher la première slide
+generateDots();
+
+
+function multiplication (a,b) {
+	console.log ("a=",a)
+	console.log ("b=",b)
+	let resultat = a*b
+	console.log ("monresultat=",resultat)
+	return resultat 
+	
+}
+
+console.log ("appel a la fonction",multiplication (2,3))
+
 // declarer l'index de l'image courant
 // Gerer le clic sur la fleche de droite
 //Incrimenter l'index de l'image courante
