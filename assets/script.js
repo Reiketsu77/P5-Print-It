@@ -22,15 +22,6 @@ let maBaliseImg = document.querySelector("arrow-left");
 const leftArrow = document.querySelector('.arrow-left');
 const rightArrow = document.querySelector('.arrow-right');
 
-leftArrow.addEventListener('click', function() {
-    console.log('Clic sur la flèche gauche');
-    alert('Vous avez cliqué sur la flèche gauche !');
-});
-
-rightArrow.addEventListener('click', function() {
-    console.log('Clic sur la flèche droite');
-    alert('Vous avez cliqué sur la flèche droite !');
-});
 
 const dotsContainer = document.querySelector('.dots');
 let currentSlide = 0; // La première slide est active par défaut
@@ -52,7 +43,7 @@ function updateBanner(index) {
 
 // dots dynamiquement en fonction du nombre de slides
 function generateDots() {
-    slides.forEach((slide, index) => {
+    slides.forEach((item, index) => {
         const dot = document.createElement('span');
         dot.classList.add('dot');
         
@@ -66,24 +57,36 @@ function generateDots() {
         dotsContainer.appendChild(dot);
     });
 
-    // premier dot par défaut
-    updateBanner(currentSlide);
+    
 }
 
 // Initialisation : Générer les points et afficher la première slide
 generateDots();
 
-
-function multiplication (a,b) {
-	console.log ("a=",a)
-	console.log ("b=",b)
-	let resultat = a*b
-	console.log ("monresultat=",resultat)
-	return resultat 
+// premier dot par défaut
 	
+    updateBanner(currentSlide);
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length; // Passe à la prochaine diapositive
+    updateBanner(currentSlide);
 }
 
-console.log ("appel a la fonction",multiplication (2,3))
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length; // Passe à la diapositive précédente
+    updateBanner(currentSlide);
+}
+
+leftArrow.addEventListener('click', function() {
+    prevSlide();
+});
+
+rightArrow.addEventListener('click', function() {
+
+    nextSlide();
+});
+
+
 
 // declarer l'index de l'image courant
 // Gerer le clic sur la fleche de droite
