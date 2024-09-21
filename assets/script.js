@@ -1,20 +1,20 @@
 const slides = [
-	{
-		"image":"slide1.jpg",
-		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>"
-	},
-	{
-		"image":"slide2.jpg",
-		"tagLine":"Tirages haute définition grand format <span>pour vos bureaux et events</span>"
-	},
-	{
-		"image":"slide3.jpg",
-		"tagLine":"Grand choix de couleurs <span>de CMJN aux pantones</span>"
-	},
-	{
-		"image":"slide4.png",
-		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
-	}
+    {
+        "image": "slide1.jpg",
+        "tagLine": "Impressions tous formats <span>en boutique et en ligne</span>"
+    },
+    {
+        "image": "slide2.jpg",
+        "tagLine": "Tirages haute définition grand format <span>pour vos bureaux et events</span>"
+    },
+    {
+        "image": "slide3.jpg",
+        "tagLine": "Grand choix de couleurs <span>de CMJN aux pantones</span>"
+    },
+    {
+        "image": "slide4.png",
+        "tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
+    }
 ]
 
 let maBaliseImg = document.querySelector("arrow-left");
@@ -46,7 +46,7 @@ function generateDots() {
     slides.forEach((item, index) => {
         const dot = document.createElement('span');
         dot.classList.add('dot');
-        
+
         // écouteur de clic pour changer la slide
         dot.addEventListener('click', () => {
             currentSlide = index;
@@ -57,15 +57,15 @@ function generateDots() {
         dotsContainer.appendChild(dot);
     });
 
-    
+
 }
 
 // Initialisation : Générer les points et afficher la première slide
 generateDots();
 
 // premier dot par défaut
-	
-    updateBanner(currentSlide);
+
+updateBanner(currentSlide);
 
 function nextSlide() {
     currentSlide = (currentSlide + 1) % slides.length; // Passe à la prochaine diapositive
@@ -77,19 +77,11 @@ function prevSlide() {
     updateBanner(currentSlide);
 }
 
-leftArrow.addEventListener('click', function() {
+leftArrow.addEventListener('click', function () {
     prevSlide();
 });
 
-rightArrow.addEventListener('click', function() {
+rightArrow.addEventListener('click', function () {
 
     nextSlide();
 });
-
-
-
-// declarer l'index de l'image courant
-// Gerer le clic sur la fleche de droite
-//Incrimenter l'index de l'image courante
-// Recuperer l'image correspondante a partir du tableau
-// Mettre a jour le src de l'image 
